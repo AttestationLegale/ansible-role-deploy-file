@@ -38,5 +38,5 @@ script:
     && (echo '/tmp/google_logo.png mode = 0600: pass' && exit 0)
     || (echo '/tmp/google_logo.png mode != 0600: fail' && exit 1)
 
-#notifications:
-#  webhooks: https://galaxy.ansible.com/api/v1/notifications/
+notifications:
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/

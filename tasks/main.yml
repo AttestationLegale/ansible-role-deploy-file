@@ -17,7 +17,7 @@
   tags: [deploy-file]
 
 - name: 'Deploy file with scp'
-  command: >
+  shell: >
     scp {{ item.uri }} {{ item.dest }}
     && chown {{ item.owner | default(df_default_owner) }}:{{ item.group | default(df_default_group) }} {{ item.dest }}
     && chmod {{ item.mode | default(df_default_mode) }} {{ item.dest }}
