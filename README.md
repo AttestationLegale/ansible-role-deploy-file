@@ -1,8 +1,8 @@
-# Ansible Role: Skel
+# Ansible Role: Deploy-file
 
-[![Build Status](https://travis-ci.org/AttestationLegale/ansible-role-skel.svg?branch=master)](https://travis-ci.org/AttestationLegale/ansible-role-skel) [![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-skel-blue.svg)](https://galaxy.ansible.com/AttestationLegale/skel/)
+[![Build Status](https://travis-ci.org/AttestationLegale/ansible-role-deploy-file.svg?branch=master)](https://travis-ci.org/AttestationLegale/ansible-role-deploy-file) [![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-deploy-file-blue.svg)](https://galaxy.ansible.com/AttestationLegale/deploy-file/)
 
-Manage unix `skeleton`.
+Deploy files from various location and different protocols.
 
 ## Requirements
 
@@ -12,18 +12,9 @@ None
 
 For a complete list of variables, see `default/main.yml`.
 
-    skel_default_owner: 'root'
-    skel_default_group: 'root'
-    skel_default_directory_mode: '0750'
-    skel_default_file_mode: '0640'
-
-    skel_default_link_force: False
-    skel_default_link_mode: '0640'
-    skel_default_link_state: 'link'
-
-    skel_entries: []
-    skel_group_entries: []
-    skel_host_entries: []
+    df_entries: []
+    df_group_entries: []
+    df_host_entries: []
 
 ## Dependencies
 
@@ -35,12 +26,17 @@ None
 ---
   - hosts: all
     roles:
-      - skel
+      - deploy-file
     vars:
-      skel_entries:
-        - path: /etc/skel/.ssh
-          state: directory
+      df_entries:
+        - type: get_url
+          url: "https://www.google.fr/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
+          dest: "/tmp/google_logo.png"
+          mode: "600"
+
 ```
+
+Supported types are `get_url` for http / https / ftp and `scp`.
 
 ## License
 
