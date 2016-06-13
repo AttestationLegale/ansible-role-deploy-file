@@ -34,7 +34,7 @@ script:
   # Check if /tmp/google_logo.png mode is 0600.
   - >
     ls -l /tmp/google_logo.png
-    | | awk '{ print $1; }' | grep -q "^-rw-------$"
+    | awk '{ print $1; }' | grep -q "^-rw-------$"
     && (echo '/tmp/google_logo.png mode = 0600: pass' && exit 0)
     || (echo '/tmp/google_logo.png mode != 0600: fail' && exit 1)
 
