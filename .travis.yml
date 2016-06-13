@@ -31,5 +31,12 @@ script:
     && (echo 'Idempotence test: pass' && exit 0)
     || (echo 'Idempotence test: fail' && exit 1)
 
+  # Check if /tmp/google_logo.png mode is 0600.
+  - >
+    ls -l /tmp/google_logo.png
+    | | awk '{ print $1; }' | grep -q "^-rw-------$"
+    && (echo '/tmp/google_logo.png mode = 0600: pass' && exit 0)
+    || (echo '/tmp/google_logo.png mode != 0600: fail' && exit 1)
+
 #notifications:
 #  webhooks: https://galaxy.ansible.com/api/v1/notifications/
