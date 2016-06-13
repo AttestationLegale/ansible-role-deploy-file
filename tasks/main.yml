@@ -1,0 +1,29 @@
+---
+
+# Main tasks file for deploy-file role
+
+- name: 'Deploy file with get_url'
+  get_url:
+    url: "{{ item.url }}"
+    dest: "{{ item.dest }}"
+    owner: "{{ item.owner | default(df_default_owner) }}"
+    group: "{{ item.group | default(df_default_group) }}"
+    mode: "{{ item.mode | default(df_default_mode) }}"
+  when: item.type is defined and item.type == 'get_url'
+  with_flattened:
+    - "{{ df_entries }}"
+    - "{{ df_group_entries }}"
+    - "{{ df_host_entries }}"
+  tags: [deploy-file]
+
+- name: 'Deploy file with scp'
+  command: >
+    scp {{ item.uri }} {{ item.dest }}
+    && chown {{ item.owner | default(df_default_owner) }}:{{ item.group | default(df_default_group) }} {{ item.dest }}
+    && chmod {{ item.mode | default(df_default_mode) }} {{ item.dest }}
+  when: item.type is defined and item.type == 'scp'
+  with_flattened:
+    - "{{ df_entries }}"
+    - "{{ df_group_entries }}"
+    - "{{ df_host_entries }}"
+  tags: [deploy-file]

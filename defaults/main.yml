@@ -1,0 +1,11 @@
+---
+
+# Defaults vars file for deploy-file role
+
+df_default_owner: "root"
+df_default_group: "root"
+df_default_mode: "0640"
+
+df_entries: []
+df_group_entries: []
+df_host_entries: []

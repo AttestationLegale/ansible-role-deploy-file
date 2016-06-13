@@ -1,0 +1,13 @@
+---
+- hosts: localhost
+  remote_user: root
+
+  vars:
+    - df_entries:
+      - type: get_url
+        url: "https://www.google.fr/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
+        dest: "/tmp/google_logo.png"
+        mode: "600"
+
+  roles:
+    - ansible-role-deploy-file
