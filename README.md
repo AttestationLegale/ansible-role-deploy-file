@@ -1,6 +1,6 @@
 # Ansible Role: Deploy-file
 
-[![Build Status](https://travis-ci.org/AttestationLegale/ansible-role-deploy-file.svg?branch=master)](https://travis-ci.org/AttestationLegale/ansible-role-deploy-file) [![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-deploy-file-blue.svg)](https://galaxy.ansible.com/AttestationLegale/deploy-file/)
+[![Build Status](https://travis-ci.org/AttestationLegale/ansible-role-deploy-file.svg?branch=master)](https://travis-ci.org/AttestationLegale/ansible-role-deploy-file) [![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-deploy--file-blue.svg)](https://galaxy.ansible.com/AttestationLegale/deploy-file/)
 
 Deploy files from various location and different protocols.
 
